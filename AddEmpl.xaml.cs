@@ -48,14 +48,13 @@ namespace uchet
                     SQLiteCommand cmd2 = new SQLiteCommand(query2, connection);
                     SQLiteDataAdapter SDA1 = new SQLiteDataAdapter(cmd1);
                     SQLiteDataAdapter SDA2 = new SQLiteDataAdapter(cmd2);
-                   
                     SDA1.Fill(dt1);
                     SDA2.Fill(dt2);
                     CbPost.ItemsSource = dt1.DefaultView;
-                    CbPost.DisplayMemberPath = "id";
+                    CbPost.DisplayMemberPath = "Name";
                     CbPost.SelectedValuePath = "id";
                     CbStat.ItemsSource = dt2.DefaultView;
-                    CbStat.DisplayMemberPath = "id";
+                    CbStat.DisplayMemberPath = "Status";
                     CbStat.SelectedValuePath = "id";
                 }
                 catch (Exception ex)
@@ -68,8 +67,11 @@ namespace uchet
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
+                int IdStatus, IdPost;
+                bool NameStat = int.TryParse(CbStat.SelectedValue.ToString(), out IdStatus);
+                bool NamePost= int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
                 connection.Open();
-                string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@SN, @FN, @MN, @Date, @Phone, @Post, @Stat)";
+                string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@SN, @FN, @MN, @Date, @Phone, '{IdPost}', '{IdStatus}')";
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
                 try
                 {
@@ -78,8 +80,8 @@ namespace uchet
                     cmd.Parameters.AddWithValue("@MN", TbMN.Text);
                     cmd.Parameters.AddWithValue("@Date", DpB.Text);
                     cmd.Parameters.AddWithValue("@Phone", TbPhone.Text);
-                    cmd.Parameters.AddWithValue("@Post", CbPost.Text);
-                    cmd.Parameters.AddWithValue("@Stat", CbStat.Text);
+                    /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
+                    cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
                     cmd.ExecuteNonQuery();
                     this.Close();
                 }

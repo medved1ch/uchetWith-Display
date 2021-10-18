@@ -60,7 +60,6 @@ namespace uchet
                     SQLiteDataAdapter SDA = new SQLiteDataAdapter(cmd);
                     SDA.Fill(DT);
                     DGAllEmp.ItemsSource = DT.DefaultView;
-                    
                 }
                 catch (Exception exp)
                 {
