@@ -19,7 +19,7 @@
                 </Button.ToolTip>
                 <iconPacks:PackIconBootstrapIcons Kind="ArrowLeftSquareFill" Width="22" Height="22"  />
             </Button>
-            <Button x:Name="BtnExp">
+            <Button x:Name="BtnExp" Click="BtnExp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         Экспорт в Excel
@@ -30,7 +30,7 @@
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
     <Grid Width="800" Margin="0,0,-8,0">
-        <DataGrid x:Name="DGTrack" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="0,10,0,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False">
+        <DataGrid x:Name="DGTrack" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="0,10,0,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>

@@ -16,6 +16,7 @@ using MahApps.Metro.Controls;
 using System.Data.SQLite;
 using uchet.Connection;
 using System.Data;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace uchet
 {
@@ -25,7 +26,7 @@ namespace uchet
     public partial class MainWindow : MetroWindow
 
     {
-      
+
 
         public MainWindow()
         {
@@ -45,7 +46,7 @@ namespace uchet
         {
             Tracker tracker = new Tracker();
             tracker.Owner = this;
-            tracker.Show();
+            tracker.ShowDialog();
         }
         public void DisplayData()
         {
@@ -69,14 +70,14 @@ namespace uchet
 
             }
         }
-       
+
         public void Delete()
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
                 try
                 {
-                    
+
                     foreach (var item in DGAllEmp.SelectedItems.Cast<DataRowView>())
                     {
                         string query1 = $@"DELETE FROM Employee WHERE id = " + item["ID"];
@@ -104,6 +105,30 @@ namespace uchet
         {
             Delete();
             DisplayData();
+        }
+
+        private void BtnExp_Click(object sender, RoutedEventArgs e)
+        {
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Excel.Worksheet sheet1 = (Excel.Worksheet)workbook.Sheets[1];
+            for (int j = 0; j < DGAllEmp.Columns.Count; j++)
+            {
+                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = DGAllEmp.Columns[j].Header;
+            }
+            for (int i = 0; i < DGAllEmp.Columns.Count; i++)
+            {
+                for (int j = 0; j < DGAllEmp.Items.Count; j++)
+                {
+                    TextBlock b = DGAllEmp.Columns[i].GetCellContent(DGAllEmp.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
         }
     }
 }

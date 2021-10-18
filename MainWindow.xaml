@@ -11,7 +11,7 @@
         Title="Обзор" WindowState="Normal" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Height="450" Width="800">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
-            <Button x:Name="BtnExp">
+            <Button x:Name="BtnExp" Click="BtnExp_Click">
                 <Button.ToolTip>
                     <ToolTip>
                         Экспорт в Excel
@@ -27,7 +27,7 @@
 
 
     <Grid Height="450" Width="800">
-        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="10,10,10,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" Grid.ColumnSpan="2">
+        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="10,10,10,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" Grid.ColumnSpan="2" GridLinesVisibility="Vertical">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SN}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FN}"/>
