@@ -1,0 +1,41 @@
+﻿<mah:MetroWindow x:Class="uchet.EditEmpl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+        xmlns:local="clr-namespace:uchet"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="Добавить" WindowState="Normal" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" MinHeight="405" MinWidth="502">
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button x:Name="BtnBack" Click="BtnBack_Click">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Вернуться назад
+                    </ToolTip>
+                </Button.ToolTip>
+                <iconPacks:PackIconBootstrapIcons Kind="ArrowLeftSquareFill" Width="22" Height="22"  />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+    <Grid>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="110,47,0,0" VerticalAlignment="Top" Width="66" HorizontalContentAlignment="Right"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="133,77,0,0" VerticalAlignment="Top" Width="43"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="110,107,0,0" VerticalAlignment="Top" Width="66" HorizontalContentAlignment="Right"/>
+        <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="79,137,0,0" VerticalAlignment="Top" Width="97" HorizontalContentAlignment="Right"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" Margin="110,167,0,0" VerticalAlignment="Top" Width="66" HorizontalContentAlignment="Right"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="100,197,0,0" VerticalAlignment="Top" Width="76" HorizontalContentAlignment="Right"/>
+        <Label Content="Статус" HorizontalAlignment="Left" Margin="100,227,0,0" VerticalAlignment="Top" Width="76" HorizontalContentAlignment="Right" />
+        <TextBox x:Name="TbSN" HorizontalAlignment="Left" Height="22" Margin="204,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
+        <TextBox x:Name="TbFN" HorizontalAlignment="Left" Height="22" Margin="204,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
+        <TextBox x:Name="TbMN" HorizontalAlignment="Left" Height="22" Margin="204,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
+        <DatePicker x:Name="DpB" HorizontalAlignment="Left" Margin="204,137,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
+        <ComboBox x:Name="CbPost" HorizontalAlignment="Left" Margin="204,197,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
+        <ComboBox x:Name="CbStat" HorizontalAlignment="Left" Margin="204,227,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
+        <TextBox x:Name="TbMid_Copy" HorizontalAlignment="Left" Margin="204,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="22" VerticalContentAlignment="Center"/>
+        <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="321,283,0,0" VerticalAlignment="Top" Width="102"/>
+    </Grid>
+</mah:MetroWindow>

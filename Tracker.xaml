@@ -1,0 +1,47 @@
+﻿<mah:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:uchet"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="uchet.Tracker"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
+        mc:Ignorable="d"
+        Title="Tracker" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="450" Width="800">
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button x:Name="BtnBack" Click="BtnBack_Click" >
+                <Button.ToolTip>
+                    <ToolTip>
+                        Вернуться назад
+                    </ToolTip>
+                </Button.ToolTip>
+                <iconPacks:PackIconBootstrapIcons Kind="ArrowLeftSquareFill" Width="22" Height="22"  />
+            </Button>
+            <Button x:Name="BtnExp">
+                <Button.ToolTip>
+                    <ToolTip>
+                        Экспорт в Excel
+                    </ToolTip>
+                </Button.ToolTip>
+                <iconPacks:Unicons Kind="FileImport" Width="22" Height="22" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+    <Grid Height="450" Width="800">
+        <DataGrid x:Name="DGTrack" HorizontalAlignment="Center" Height="377" Margin="0,10,0,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия"/>
+                <DataGridTextColumn Header="Имя"/>
+                <DataGridTextColumn Header="Время входа"/>
+                <DataGridTextColumn Header="Время выхода"/>
+                <DataGridTextColumn Header="Дата входа"/>
+                <DataGridTextColumn Header="Дата выхода"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+
+</mah:MetroWindow>
