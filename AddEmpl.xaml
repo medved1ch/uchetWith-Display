@@ -38,6 +38,5 @@
         <TextBox x:Name="TbPhone" HorizontalAlignment="Left" Margin="204,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="22" VerticalContentAlignment="Center" PreviewTextInput="TbPhone_PreviewTextInput" MaxLength="11"/>
         <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="321,283,0,0" VerticalAlignment="Top" Width="102" Click="BtnAdd_Click"/>
         <Button x:Name="BtnPost" Content="" HorizontalAlignment="Left" Margin="428,197,0,0" VerticalAlignment="Top" Width="26" Height="26"/>
-        <Button x:Name="BtnStatus" Content="" HorizontalAlignment="Left" Margin="428,227,0,0" VerticalAlignment="Top" Width="26" Height="26"/>
     </Grid>
 </mah:MetroWindow>

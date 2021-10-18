@@ -103,7 +103,7 @@ namespace uchet
                     try
                     {
                         cmd.Parameters.AddWithValue("@Time", DateTime.Now.TimeOfDay.ToString("hh\\:mm"));
-                        cmd.Parameters.AddWithValue("@Date", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+                        cmd.Parameters.AddWithValue("@Date", DateTime.Now.Date.ToString("dd/MM/yyyy"));
                         cmd.ExecuteNonQuery();
 
                     }
@@ -132,7 +132,7 @@ namespace uchet
                 try
                 {
                     cmd.Parameters.AddWithValue("@Time", DateTime.Now.TimeOfDay.ToString("hh\\:mm"));
-                    cmd.Parameters.AddWithValue("@Date", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+                    cmd.Parameters.AddWithValue("@Date", DateTime.Now.Date.ToString("dd/MM/yyyy"));
                     cmd.ExecuteNonQuery();
 
                 }
