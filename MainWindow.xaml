@@ -27,12 +27,12 @@
 
 
     <Grid Height="450" Width="800">
-        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" Margin="10,10,10,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" Grid.ColumnSpan="2">
+        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="10,10,10,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Dateofbirth}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding SN}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FN}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MN}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DoB}"/>
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="Должность" Binding="{Binding Post}"/>
                 <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>

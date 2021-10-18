@@ -54,7 +54,7 @@ namespace uchet
                 try
                 {
                     connection.Open();
-                    string query = $@"SELECT Employee.id, Employee.FirstName, Employee.SecondName, Employee.MiddleName, Employee.Dateofbirth, Employee.Phone, Position.Name AS Post, Stat.Status FROM Employee INNER JOIN Position on Employee.idPost = Position.id INNER JOIN Stat on Employee.idStatus = Stat.id";
+                    string query = $@"SELECT Employee.id, Employee.FirstName AS FN, Employee.SecondName AS SN, Employee.MiddleName AS MN, Employee.Dateofbirth AS DoB, Employee.Phone AS Phone, Position.Name AS Post, Stat.Status FROM Employee INNER JOIN Position on Employee.idPost = Position.id INNER JOIN Stat on Employee.idStatus = Stat.id";
                     SQLiteCommand cmd = new SQLiteCommand(query, connection);
                     DataTable DT = new DataTable("Employee");
                     SQLiteDataAdapter SDA = new SQLiteDataAdapter(cmd);
@@ -107,4 +107,3 @@ namespace uchet
         }
     }
 }
-

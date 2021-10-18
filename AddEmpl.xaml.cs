@@ -35,6 +35,10 @@ namespace uchet
             this.Close();
 
         }
+        private void TbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(Char.IsDigit(e.Text, 0));
+    }
         public void CbFill()
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
@@ -63,34 +67,45 @@ namespace uchet
                 }
             }
      }
-        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click( object sender, RoutedEventArgs e)
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
-                int IdStatus, IdPost;
-                bool NameStat = int.TryParse(CbStat.SelectedValue.ToString(), out IdStatus);
-                bool NamePost= int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
-                connection.Open();
-                string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@SN, @FN, @MN, @Date, @Phone, '{IdPost}', '{IdStatus}')";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                try
+               
+                if (String.IsNullOrEmpty(TbSN.Text) || String.IsNullOrEmpty(TbFN.Text) || String.IsNullOrEmpty(DpB.Text) || String.IsNullOrEmpty(TbPhone.Text) || CbStat.SelectedIndex == -1 || CbPost.SelectedIndex == -1)
                 {
-                    cmd.Parameters.AddWithValue("@SN", TbSN.Text);
-                    cmd.Parameters.AddWithValue("@FN", TbFN.Text);
-                    cmd.Parameters.AddWithValue("@MN", TbMN.Text);
-                    cmd.Parameters.AddWithValue("@Date", DpB.Text);
-                    cmd.Parameters.AddWithValue("@Phone", TbPhone.Text);
-                    /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
-                    cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
-                    cmd.ExecuteNonQuery();
-                    this.Close();
+                    MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                catch (SQLiteException ex)
+                 else
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    int IdStatus, IdPost;
+                    bool NameStat = int.TryParse(CbStat.SelectedValue.ToString(), out IdStatus);
+                    bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
+                    connection.Open();
+                    string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@FN, @SN, @MN, @Date, @Phone, '{IdPost}', '{IdStatus}')";
+                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                    try
+                    {
+                        
+                        cmd.Parameters.AddWithValue("@SN", TbSN.Text);
+                        cmd.Parameters.AddWithValue("@FN", TbFN.Text);
+                        cmd.Parameters.AddWithValue("@MN", TbMN.Text);
+                        cmd.Parameters.AddWithValue("@Date", DpB.Text);
+                        cmd.Parameters.AddWithValue("@Phone", TbPhone.Text);
+                        /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
+                        cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
+                        cmd.ExecuteNonQuery();
+                        this.Close();
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                }
+
                 }
             }
         }
     }
-}
+
 
