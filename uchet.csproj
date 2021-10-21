@@ -209,6 +209,9 @@
     <Compile Include="AddEmpl.xaml.cs">
       <DependentUpon>AddEmpl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPost.xaml.cs">
+      <DependentUpon>AddPost.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connection\DBConnection.cs" />
     <Compile Include="EditEmpl.xaml.cs">
       <DependentUpon>EditEmpl.xaml</DependentUpon>
@@ -217,6 +220,10 @@
       <DependentUpon>Tracker.xaml</DependentUpon>
     </Compile>
     <Page Include="AddEmpl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddPost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

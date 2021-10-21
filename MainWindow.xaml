@@ -8,7 +8,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
         mc:Ignorable="d"
-        Title="Обзор" WindowState="Normal" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Height="450" Width="800">
+        Title="UCHET: Обзор" WindowState="Normal" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Height="450" Width="800">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnExp" Click="BtnExp_Click">

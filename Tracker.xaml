@@ -8,7 +8,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
         mc:Ignorable="d"
-        Title="Tracker" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="463" Width="800">
+        Title="UCHET: Отследить" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="463" Width="800">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnBack" Click="BtnBack_Click" >
@@ -35,8 +35,9 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Время входа" Binding="{Binding TimeEn}"/>
-                <DataGridTextColumn Header="Время выхода" Binding="{Binding TimeEx}"/>
                 <DataGridTextColumn Header="Дата входа" Binding="{Binding DateEn}"/>
+                <DataGridTextColumn Header="Время выхода" Binding="{Binding TimeEx}"/>
+                
                 <DataGridTextColumn Header="Дата выхода" Binding="{Binding DateEx}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:uchet"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="Добавить" WindowState="Normal" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" MinHeight="405" MinWidth="502">
+        Title="UCHET: Добавить" WindowState="Normal" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterOwner" MinHeight="405" MinWidth="502">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnBack" Click="BtnBack_Click">
@@ -37,6 +37,7 @@
         <ComboBox x:Name="CbStat" HorizontalAlignment="Left" Margin="204,227,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
         <TextBox x:Name="TbPhone" HorizontalAlignment="Left" Margin="204,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="22" VerticalContentAlignment="Center" PreviewTextInput="TbPhone_PreviewTextInput" MaxLength="11"/>
         <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="321,283,0,0" VerticalAlignment="Top" Width="102" Click="BtnAdd_Click"/>
-        <Button x:Name="BtnPost" Content="" HorizontalAlignment="Left" Margin="428,197,0,0" VerticalAlignment="Top" Width="26" Height="26"/>
+        <Button x:Name="BtnAddPost" Content="" HorizontalAlignment="Left" Margin="428,197,0,0" VerticalAlignment="Top" Width="26" Height="26" Click="BtnAddPost_Click"/>
+        <Button x:Name="BtnDelPost" Content="" HorizontalAlignment="Left" Margin="459,197,0,0" VerticalAlignment="Top" Width="26" Height="26" Click="BtnDelPost_Click"/>
     </Grid>
 </mah:MetroWindow>

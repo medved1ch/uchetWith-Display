@@ -26,8 +26,8 @@ namespace uchet
     public partial class MainWindow : MetroWindow
 
     {
-
-
+        DataTable dt1 = new DataTable("Position");
+        DataTable dt2 = new DataTable("Stat");
         public MainWindow()
         {
             InitializeComponent();

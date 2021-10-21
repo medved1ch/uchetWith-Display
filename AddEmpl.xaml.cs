@@ -71,7 +71,7 @@ namespace uchet
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
-               
+                connection.Open();
                 if (String.IsNullOrEmpty(TbSN.Text) || String.IsNullOrEmpty(TbFN.Text) || String.IsNullOrEmpty(DpB.Text) || String.IsNullOrEmpty(TbPhone.Text) || CbStat.SelectedIndex == -1 || CbPost.SelectedIndex == -1)
                 {
                     MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -81,12 +81,11 @@ namespace uchet
                     int IdStatus, IdPost;
                     bool NameStat = int.TryParse(CbStat.SelectedValue.ToString(), out IdStatus);
                     bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
-                    connection.Open();
+                    
                     string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@FN, @SN, @MN, @Date, @Phone, '{IdPost}', '{IdStatus}')";
                     SQLiteCommand cmd = new SQLiteCommand(query, connection);
                     try
                     {
-                        
                         cmd.Parameters.AddWithValue("@SN", TbSN.Text);
                         cmd.Parameters.AddWithValue("@FN", TbFN.Text);
                         cmd.Parameters.AddWithValue("@MN", TbMN.Text);
@@ -95,7 +94,21 @@ namespace uchet
                         /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
                         cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
                         cmd.ExecuteNonQuery();
-                        this.Close();
+                        MessageBoxResult result = MessageBox.Show("Внести нового сотрудника? ", "Пользователь добавлен", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            TbFN.Clear();
+                            TbSN.Clear();
+                            TbMN.Clear();
+                            TbPhone.Clear();
+                            DpB.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
+                            TbPhone.Clear();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+                        
                     }
                     catch (SQLiteException ex)
                     {
@@ -105,7 +118,42 @@ namespace uchet
 
                 }
             }
+
+        private void BtnAddPost_Click(object sender, RoutedEventArgs e)
+        {
+            AddPost addPost = new AddPost();
+            addPost.Owner = this;
+            addPost.ShowDialog();
         }
+        public void Delete()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
+            {
+                int IdPost;
+                bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
+                try
+                {
+                        string query1 = $@"DELETE FROM Position WHERE id = '{IdPost}'";
+                        connection.Open();
+                        SQLiteCommand cmd1 = new SQLiteCommand(query1, connection);
+                        DataTable DT = new DataTable("Position");
+                        cmd1.ExecuteNonQuery();
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.Message);
+                }
+
+
+            }
+        }
+
+        private void BtnDelPost_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
+            CbFill();
+        }
+    }
     }
 
 
