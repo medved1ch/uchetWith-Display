@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:uchet"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="UCHET: Должность" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="165" Width="465">
+        Title="UCHET: Должность" WindowState="Normal" WindowStartupLocation="CenterOwner" MaxHeight="165" MaxWidth="465" MinWidth="465" MinHeight="165">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnBack" Click="BtnBack_Click">

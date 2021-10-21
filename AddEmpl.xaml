@@ -29,7 +29,7 @@
         <Label Content="Телефон" HorizontalAlignment="Left" Margin="110,167,0,0" VerticalAlignment="Top" Width="66" HorizontalContentAlignment="Right"/>
         <Label Content="Должность" HorizontalAlignment="Left" Margin="100,197,0,0" VerticalAlignment="Top" Width="76" HorizontalContentAlignment="Right"/>
         <Label Content="Статус" HorizontalAlignment="Left" Margin="100,227,0,0" VerticalAlignment="Top" Width="76" HorizontalContentAlignment="Right" />
-        <TextBox x:Name="TbSN" HorizontalAlignment="Left" Height="22" Margin="204,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
+        <TextBox x:Name="TbSN" HorizontalAlignment="Left" Height="22"  Margin="204,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
         <TextBox x:Name="TbFN" HorizontalAlignment="Left" Height="22" Margin="204,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
         <TextBox x:Name="TbMN" HorizontalAlignment="Left" Height="22" Margin="204,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
         <DatePicker x:Name="DpB" HorizontalAlignment="Left" Margin="204,137,0,0" VerticalAlignment="Top" Width="219" Height="22"/>

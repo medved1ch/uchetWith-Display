@@ -38,7 +38,7 @@ namespace uchet
         private void TbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
-    }
+        }
         public void CbFill()
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
