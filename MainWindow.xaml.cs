@@ -26,8 +26,6 @@ namespace uchet
     public partial class MainWindow : MetroWindow
 
     {
-        DataTable dt1 = new DataTable("Position");
-        DataTable dt2 = new DataTable("Stat");
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +35,13 @@ namespace uchet
         {
             AddEmpl addEmpl = new AddEmpl();
             addEmpl.Owner = this;
-            addEmpl.ShowDialog();
+            bool? result = addEmpl.ShowDialog();
+            switch (result)
+            {
+                default:
+                    DisplayData();
+                    break;
+            }
 
 
         }
@@ -128,6 +132,19 @@ namespace uchet
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
+            }
+        }
+
+        private void DGAllEmp_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditEmpl editEmpl = new EditEmpl((DataRowView)DGAllEmp.SelectedItem);
+            editEmpl.Owner = this;
+            bool? result = editEmpl.ShowDialog();
+            switch (result)
+            {
+                default:
+                    DisplayData();
+                    break;
             }
         }
     }

@@ -272,6 +272,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="3592855-business-man-employee-general-human-member-office-tie_107745.ico" />
+    <Resource Include="img\add.png" />
+    <Resource Include="img\minus.png" />
     <Content Include="uchet.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

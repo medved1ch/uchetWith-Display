@@ -27,7 +27,8 @@ namespace uchet
         public AddEmpl()
         {
             InitializeComponent();
-            CbFill();
+            CbStatusFill();
+            CbPostFill();
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -39,24 +40,18 @@ namespace uchet
         {
             e.Handled = !(Char.IsDigit(e.Text, 0));
         }
-        public void CbFill()
+        public void CbStatusFill()
         {
+            dt2.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
                 try
                 {
                     connection.Open();
-                    string query1 = $@"SELECT * FROM Position";
                     string query2 = $@"SELECT * FROM Stat";
-                    SQLiteCommand cmd1 = new SQLiteCommand(query1, connection);
                     SQLiteCommand cmd2 = new SQLiteCommand(query2, connection);
-                    SQLiteDataAdapter SDA1 = new SQLiteDataAdapter(cmd1);
                     SQLiteDataAdapter SDA2 = new SQLiteDataAdapter(cmd2);
-                    SDA1.Fill(dt1);
                     SDA2.Fill(dt2);
-                    CbPost.ItemsSource = dt1.DefaultView;
-                    CbPost.DisplayMemberPath = "Name";
-                    CbPost.SelectedValuePath = "id";
                     CbStat.ItemsSource = dt2.DefaultView;
                     CbStat.DisplayMemberPath = "Status";
                     CbStat.SelectedValuePath = "id";
@@ -66,7 +61,29 @@ namespace uchet
                     MessageBox.Show(ex.Message);
                 }
             }
-     }
+        }
+        public void CbPostFill()
+        {
+            dt1.Clear();
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = $@"SELECT * FROM Position";
+                    SQLiteCommand cmd1 = new SQLiteCommand(query1, connection);
+                    SQLiteDataAdapter SDA1 = new SQLiteDataAdapter(cmd1);
+                    SDA1.Fill(dt1);
+                    CbPost.ItemsSource = dt1.DefaultView;
+                    CbPost.DisplayMemberPath = "Name";
+                    CbPost.SelectedValuePath = "id"; 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
         private void BtnAdd_Click( object sender, RoutedEventArgs e)
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
@@ -123,7 +140,13 @@ namespace uchet
         {
             AddPost addPost = new AddPost();
             addPost.Owner = this;
-            addPost.ShowDialog();
+            bool? result = addPost.ShowDialog();
+            switch (result)
+            {
+                default:
+                    CbPostFill();
+                    break;
+            }
         }
         public void Delete()
         {
@@ -151,7 +174,7 @@ namespace uchet
         private void BtnDelPost_Click(object sender, RoutedEventArgs e)
         {
             Delete();
-            CbFill();
+            CbPostFill();
         }
     }
     }

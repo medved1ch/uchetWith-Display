@@ -21,7 +21,7 @@
             </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
-    <Grid>
+    <Grid >
         <Label Content="Должность" HorizontalAlignment="Left" Margin="30,22,0,0" VerticalAlignment="Top" Width="107" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="TbPost" HorizontalAlignment="Left" Height="22" Margin="160,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" VerticalContentAlignment="Center" />
         <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="304,53,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
