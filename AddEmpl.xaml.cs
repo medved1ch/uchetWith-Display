@@ -152,21 +152,27 @@ namespace uchet
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
-                int IdPost;
-                bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
-                try
+                if (CbPost.SelectedIndex == -1)
                 {
+                    MessageBox.Show("Выберите должность, которую хотите удалить", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    int IdPost;
+                    bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
+                    try
+                    {
                         string query1 = $@"DELETE FROM Position WHERE id = '{IdPost}'";
                         connection.Open();
                         SQLiteCommand cmd1 = new SQLiteCommand(query1, connection);
                         DataTable DT = new DataTable("Position");
                         cmd1.ExecuteNonQuery();
+                    }
+                    catch (Exception exp)
+                    {
+                        MessageBox.Show(exp.Message);
+                    }
                 }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(exp.Message);
-                }
-
 
             }
         }
