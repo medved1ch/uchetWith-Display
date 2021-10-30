@@ -13,6 +13,8 @@ using MahApps.Metro.Controls;
 using System.Data.SQLite;
 using uchet.Connection;
 using System.Data;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace uchet
 {
@@ -35,10 +37,6 @@ namespace uchet
         {
             this.Close();
 
-        }
-        private void TbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !(Char.IsDigit(e.Text, 0));
         }
         public void CbStatusFill()
         {
@@ -76,7 +74,7 @@ namespace uchet
                     SDA1.Fill(dt1);
                     CbPost.ItemsSource = dt1.DefaultView;
                     CbPost.DisplayMemberPath = "Name";
-                    CbPost.SelectedValuePath = "id"; 
+                    CbPost.SelectedValuePath = "id";
                 }
                 catch (Exception ex)
                 {
@@ -84,7 +82,7 @@ namespace uchet
                 }
             }
         }
-        private void BtnAdd_Click( object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
             {
@@ -93,12 +91,12 @@ namespace uchet
                 {
                     MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                 else
+                else
                 {
                     int IdStatus, IdPost;
                     bool NameStat = int.TryParse(CbStat.SelectedValue.ToString(), out IdStatus);
                     bool NamePost = int.TryParse(CbPost.SelectedValue.ToString(), out IdPost);
-                    
+
                     string query = $@"INSERT INTO Employee('FirstName', 'SecondName', 'MiddleName', 'Dateofbirth', 'Phone', 'idPost', 'idStatus') values (@FN, @SN, @MN, @Date, @Phone, '{IdPost}', '{IdStatus}')";
                     SQLiteCommand cmd = new SQLiteCommand(query, connection);
                     try
@@ -125,7 +123,7 @@ namespace uchet
                         {
                             this.Close();
                         }
-                        
+
                     }
                     catch (SQLiteException ex)
                     {
@@ -133,8 +131,8 @@ namespace uchet
                     }
                 }
 
-                }
             }
+        }
 
         private void BtnAddPost_Click(object sender, RoutedEventArgs e)
         {
@@ -182,7 +180,49 @@ namespace uchet
             Delete();
             CbPostFill();
         }
+        private void PhoneMask(string Phone)
+        {
+            var newVal = Phone;
+            Phone = string.Empty;
+            switch (newVal.Length)
+            {
+                case 1:
+                    Phone = Regex.Replace(newVal, @"(\d{1})", "+7(___)___-__-__");
+                    break;
+                case 2:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2__)___-__-__");
+                    break;
+                case 3:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2_)___-__-__");
+                    break;
+                case 4:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2)___-__-__");
+                    break;
+                case 5:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3__-__-__");
+                    break;
+                case 6:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3_-__-__");
+                    break;
+                case 7:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3-__-__");
+                    break;
+                case 8:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})", "+7($2)$3-$4_-__");
+                    break;
+                case 9:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})", "+7($2)$3-$4-__");
+                    break;
+                case 10:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "+7($2)$3-$4-$5_");
+                    break;
+                case 11:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "+7($2)$3-$4-$5");
+                    break;
+            }
+            
+            TbPhone.Text = Phone;
+        }
     }
-    }
-
+}
 

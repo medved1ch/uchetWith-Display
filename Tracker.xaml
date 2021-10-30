@@ -8,7 +8,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
         mc:Ignorable="d"
-        Title="UCHET: Отследить" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="463" Width="800">
+        Title="EMACC: Отследить" WindowState="Normal" WindowStartupLocation="CenterOwner" Height="463" Width="800">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnBack" Click="BtnBack_Click" >
@@ -37,14 +37,13 @@
                 <DataGridTextColumn Header="Время входа" Binding="{Binding TimeEn}"/>
                 <DataGridTextColumn Header="Дата входа" Binding="{Binding DateEn}"/>
                 <DataGridTextColumn Header="Время выхода" Binding="{Binding TimeEx}"/>
-                
                 <DataGridTextColumn Header="Дата выхода" Binding="{Binding DateEx}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="BtnEnt" Content="Вход" HorizontalAlignment="Left" Margin="39,394,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="BtnEx" Content="Выход" HorizontalAlignment="Left" Margin="132,394,0,0" VerticalAlignment="Top" Width="75" Click="BtnEx_Click"/>
         <ComboBox x:Name="CbEmp" HorizontalAlignment="Left" Margin="236,394,0,0" VerticalAlignment="Top" Width="182" Height="27"/>
-
+        
     </Grid>
 
 

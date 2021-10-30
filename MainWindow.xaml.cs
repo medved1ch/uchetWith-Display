@@ -117,10 +117,19 @@ namespace uchet
             excel.Visible = true;
             Excel.Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
             Excel.Worksheet sheet1 = (Excel.Worksheet)workbook.Sheets[1];
+            sheet1.Name = "Отчет сотрудников " + DateTime.Now.Date.ToString("dd/MM/yyyy");
+            Excel.Range myRange1 = sheet1.get_Range("A1", "G1");
+            myRange1.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+            myRange1.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            myRange1.Merge(Type.Missing);
+            myRange1.Font.Name = "Times New Roman";
+            myRange1.Font.Bold = true;
+            myRange1.Cells.Font.Size = 16;
+            sheet1.Range["A1"].Value = "Отчёт был импортирован из программы EMACC "+ DateTime.Now.Date.ToString("dd/MM/yyyy");
             for (int j = 0; j < DGAllEmp.Columns.Count; j++)
             {
-                Excel.Range myRange = (Excel.Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true;
+                Excel.Range myRange = (Excel.Range)sheet1.Cells[2, j + 1];
+                myRange.Font.Bold = true;
                 sheet1.Columns[j + 1].ColumnWidth = 15;
                 myRange.Value2 = DGAllEmp.Columns[j].Header;
             }
@@ -129,7 +138,7 @@ namespace uchet
                 for (int j = 0; j < DGAllEmp.Items.Count; j++)
                 {
                     TextBlock b = DGAllEmp.Columns[i].GetCellContent(DGAllEmp.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 3, i + 1];
                     myRange.Value2 = b.Text;
                 }
             }

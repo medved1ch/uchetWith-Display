@@ -48,8 +48,6 @@ namespace uchet
                     try
                     {
                         cmd.Parameters.AddWithValue("@Post", TbPost.Text);
-                        /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
-                        cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
                         cmd.ExecuteNonQuery();
                         this.Close();
                     }

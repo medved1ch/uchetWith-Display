@@ -8,7 +8,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
         mc:Ignorable="d"
-        Title="UCHET: Обзор" WindowState="Normal" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Height="450" Width="800">
+        Title="EMACC: СОТРУДНИКИ" WindowState="Normal" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Height="450" Width="800">
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands>
             <Button x:Name="BtnExp" Click="BtnExp_Click">
@@ -27,13 +27,12 @@
 
 
     <Grid Height="450" Width="800">
-        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="10,10,10,0" ColumnWidth="*" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" Grid.ColumnSpan="2" GridLinesVisibility="Vertical" MouseDoubleClick="DGAllEmp_MouseDoubleClick">
+        <DataGrid x:Name="DGAllEmp" HorizontalAlignment="Center" Height="377" IsReadOnly="True" Margin="10,10,10,0" ColumnWidth="auto" VerticalAlignment="Top" Width="780" AutoGenerateColumns="False" MinColumnWidth="20" GridLinesVisibility="Vertical" MouseDoubleClick="DGAllEmp_MouseDoubleClick">
             <DataGrid.Columns>
-
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding SN}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding FN}"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding MN}"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DoB}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DoB}" />
                 <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="Должность" Binding="{Binding Post}"/>
                 <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
@@ -43,8 +42,5 @@
         <Button x:Name="BtnTrack" Content="Отследить" HorizontalAlignment="Left" Margin="108,392,0,0" VerticalAlignment="Top" Height="32" Width="93" Click="BtnTrack_Click"/>
         <Button x:Name="BtnUpd" Content="Обновить" HorizontalAlignment="Left" Margin="206,392,0,0" VerticalAlignment="Top" Height="32" Width="93" Click="BtnUpd_Click"/>
         <Button x:Name="BtnDel" Content="Удалить" HorizontalAlignment="Left" Margin="304,392,0,0" VerticalAlignment="Top" Height="32" Width="93" Click="BtnDel_Click" />
-
-
-
     </Grid>
 </mah:MetroWindow>
