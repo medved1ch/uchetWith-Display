@@ -39,7 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>3592855-business-man-employee-general-human-member-office-tie_107745.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
@@ -274,6 +274,7 @@
     <Resource Include="3592855-business-man-employee-general-human-member-office-tie_107745.ico" />
     <Resource Include="img\add.png" />
     <Resource Include="img\minus.png" />
+    <Resource Include="logo.ico" />
     <Content Include="uchet.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
