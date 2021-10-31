@@ -163,7 +163,7 @@ namespace uchet
             myRange1.Font.Name = "Times New Roman";
             myRange1.Font.Bold = true;
             myRange1.Cells.Font.Size = 16;
-            sheet1.Range["A1"].Value = "Отчёт был импортирован из программы EMACC" + DateTime.Now.Date.ToString("dd/MM/yyyy");
+            sheet1.Range["A1"].Value = "Отчёт был импортирован из программы EMACC " + DateTime.Now.Date.ToString("dd/MM/yyyy");
             for (int j = 0; j < DGTrack.Columns.Count; j++)
             {
                 Excel.Range myRange = (Excel.Range)sheet1.Cells[2, j + 1];
