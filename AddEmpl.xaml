@@ -34,7 +34,7 @@
         <DatePicker x:Name="DpB" HorizontalAlignment="Left" Margin="204,137,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
         <ComboBox x:Name="CbPost" HorizontalAlignment="Left" Margin="204,197,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
         <ComboBox x:Name="CbStat" HorizontalAlignment="Left" Margin="204,227,0,0" VerticalAlignment="Top" Width="219" Height="22"/>
-        <TextBox x:Name="TbPhone" HorizontalAlignment="Left" Margin="204,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="22" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TbPhone" Text="+7(___)___-__-__" HorizontalAlignment="Left" Margin="204,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="22" VerticalContentAlignment="Center" TextChanged="TbPhone_TextChanged" PreviewTextInput="TbPhone_PreviewTextInput" GotFocus="TbPhone_GotFocus"/>
         <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Height="38" Margin="321,283,0,0" VerticalAlignment="Top" Width="102" Click="BtnAdd_Click"/>
         <Button x:Name="BtnAddPost" Content="" HorizontalAlignment="Left" Margin="428,197,0,0" VerticalAlignment="Top" Width="26" Height="26" Click="BtnAddPost_Click">
             <Button.Background>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -129,8 +130,91 @@ namespace uchet
             UpdateEmployee();
             this.Close();
         }
+
+        private void PhoneMask(string Phone)
+        {
+            var newVal = Phone;
+            Phone = string.Empty;
+            switch (newVal.Length)
+            {
+                case 1:
+                    Phone = Regex.Replace(newVal, @"(\d{1})", "+7(___)___-__-__");
+                    break;
+                case 2:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2__)___-__-__");
+                    break;
+                case 3:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2_)___-__-__");
+                    break;
+                case 4:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{0,3})", "+7($2)___-__-__");
+                    break;
+                case 5:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3__-__-__");
+                    break;
+                case 6:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3_-__-__");
+                    break;
+                case 7:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})", "+7($2)$3-__-__");
+                    break;
+                case 8:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})", "+7($2)$3-$4_-__");
+                    break;
+                case 9:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})", "+7($2)$3-$4-__");
+                    break;
+                case 10:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "+7($2)$3-$4-$5_");
+                    break;
+                case 11:
+                    Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "+7($2)$3-$4-$5");
+                    break;
+            }
+            TbPhone.Text = Phone;
+        }
+        private string replacenumber()
+        {
+            string num = Regex.Replace(TbPhone.Text, @"[^0-9]", "");
+            return num;
+        }
+        private void changeCaretIndex(string Phone)
+        {
+            if (Phone.Length <= 11)
+            {
+                PhoneMask(Phone);
+            }
+            if (Phone.Length <= 4)
+            {
+                TbPhone.CaretIndex = Phone.Length + 2;
+            }
+            else if (Phone.Length <= 7)
+            {
+                TbPhone.CaretIndex = Phone.Length + 3;
+            }
+            else if (Phone.Length <= 9)
+            {
+                TbPhone.CaretIndex = Phone.Length + 4;
+            }
+            else if (Phone.Length <= 11)
+            {
+                TbPhone.CaretIndex = Phone.Length + 5;
+            }
+        }
+        private void TbPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            changeCaretIndex(replacenumber());
+        }
+
+        private void TbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            changeCaretIndex(replacenumber() + e.Text);
+            e.Handled = true;
+        }
+
+        private void TbPhone_GotFocus(object sender, RoutedEventArgs e)
+        {
+            changeCaretIndex(replacenumber());
+        }
     }
 }
-        
-    
-

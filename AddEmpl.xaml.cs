@@ -109,7 +109,7 @@ namespace uchet
                         /*cmd.Parameters.AddWithValue("@Post", CbPost.SelectedItem);
                         cmd.Parameters.AddWithValue("@Stat", CbStat.SelectedItem);*/
                         cmd.ExecuteNonQuery();
-                        MessageBoxResult result = MessageBox.Show("Внести нового сотрудника? ", "Пользователь добавлен", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        MessageBoxResult result = MessageBox.Show("Внести ещё одного сотрудника? ", "Пользователь добавлен", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if (result == MessageBoxResult.Yes)
                         {
                             TbFN.Clear();
@@ -220,8 +220,50 @@ namespace uchet
                     Phone = Regex.Replace(newVal, @"(\d{1})(\d{3})(\d{0,3})(\d{0,2})(\d{0,2})", "+7($2)$3-$4-$5");
                     break;
             }
-            
             TbPhone.Text = Phone;
+        }
+        private string replacenumber()
+        {
+            string num = Regex.Replace(TbPhone.Text, @"[^0-9]","");
+            return num;
+        }
+        private void changeCaretIndex(string Phone)
+        {
+            if (Phone.Length<=11)
+            {
+                PhoneMask(Phone);
+            }
+            if (Phone.Length <= 4)
+            {
+                TbPhone.CaretIndex = Phone.Length + 2;
+            }
+            else if (Phone.Length <= 7)
+            {
+                TbPhone.CaretIndex = Phone.Length + 3;
+            }
+            else if (Phone.Length <= 9)
+            {
+                TbPhone.CaretIndex = Phone.Length + 4;
+            }
+            else if (Phone.Length <= 11)
+            {
+                TbPhone.CaretIndex = Phone.Length + 5;
+            }
+        }
+        private void TbPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            changeCaretIndex(replacenumber());
+        }
+
+        private void TbPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            changeCaretIndex(replacenumber() + e.Text);
+            e.Handled = true;
+        }
+
+        private void TbPhone_GotFocus(object sender, RoutedEventArgs e)
+        {
+            changeCaretIndex(replacenumber());
         }
     }
 }
